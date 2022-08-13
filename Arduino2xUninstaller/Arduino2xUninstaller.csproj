@@ -1,0 +1,23 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>net6.0-windows</TargetFramework>
+    <Nullable>enable</Nullable>
+    <UseWindowsForms>true</UseWindowsForms>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Authors>Addio Electronics</Authors>
+    <Company>Addio Electronics</Company>
+    <Description>Application which manually uninstalls Arduino 2x for when official uninstaller does not work.
+</Description>
+    <PackageProjectUrl>https://github.com/AddioElectronics/Arduino2xUninstaller</PackageProjectUrl>
+    <RepositoryUrl>https://github.com/AddioElectronics/Arduino2xUninstaller</RepositoryUrl>
+    <RepositoryType>git</RepositoryType>
+    <ApplicationManifest>app.manifest</ApplicationManifest>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Arduino2xUninstall\Arduino2xUninstall.csproj" />
+  </ItemGroup>
+
+</Project>
