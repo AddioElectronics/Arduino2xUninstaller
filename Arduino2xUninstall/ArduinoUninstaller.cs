@@ -3,6 +3,7 @@ using System.Resources;
 using Arduino2xUninstaller.Properties;
 using System.Diagnostics;
 using Addio.Windows;
+using System.Reflection;
 
 namespace Arduino2xUninstaller
 {
@@ -64,11 +65,18 @@ namespace Arduino2xUninstaller
 
         static ArduinoUninstaller()
         {
-            string[] guids = Resources.KnownGUIDs.Split(Environment.NewLine);
+            //Load list of known GUIDs.
+            //This will save the app from having to manually search for the GUID of the registry keys.
+            string knownGuidsPath = Path.Combine(Directory.GetParent(Assembly.GetEntryAssembly().Location).FullName, "Resources\\KnownGUIDs.txt");
 
-            foreach(string guid in guids)
+            if (File.Exists(knownGuidsPath))
             {
-                knownGUIDs.Add(new Guid(guid));
+                string[] guids = File.ReadAllLines(knownGuidsPath);
+
+                foreach (string guid in guids)
+                {
+                    knownGUIDs.Add(new Guid(guid));
+                }
             }
 
             ConfirmGuids();
@@ -178,27 +186,27 @@ namespace Arduino2xUninstaller
             }
 
             //All users has not been confirmed, search for a registry key in LocalMachine.
-            if (allUsersGuid != Guid.Empty)
+            if (allUsersGuid == Guid.Empty)
                 using (machineSoftwareKey = Registry.LocalMachine.OpenSubKey("SOFTWARE"))
                 {
                     if (machineSoftwareKey != null)
                     {
                         Guid guid = Search(machineSoftwareKey);
 
-                        if (guid != null)
+                        if (guid != Guid.Empty)
                             allUsersGuid = guid;
                     }
                 }
 
             //Current user has not been confirmed, search for a registry key in CurrentUser.
-            if (currentUserGuid != Guid.Empty)
+            if (currentUserGuid == Guid.Empty)
                 using (userSoftwareKey = Registry.CurrentUser.OpenSubKey("SOFTWARE"))
                 {
                     if (userSoftwareKey != null)
                     {
                         Guid guid = Search(userSoftwareKey);
 
-                        if (guid != null)
+                        if (guid != Guid.Empty)
                             currentUserGuid = guid;
                     }
                 }

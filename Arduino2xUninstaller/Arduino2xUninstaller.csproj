@@ -14,6 +14,7 @@
     <RepositoryUrl>https://github.com/AddioElectronics/Arduino2xUninstaller</RepositoryUrl>
     <RepositoryType>git</RepositoryType>
     <ApplicationManifest>app.manifest</ApplicationManifest>
+    <AssemblyVersion>0.1.0.0</AssemblyVersion>
   </PropertyGroup>
 
   <ItemGroup>

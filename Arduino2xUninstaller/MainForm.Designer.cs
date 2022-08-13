@@ -47,9 +47,9 @@
             // 
             // button_Uninstall
             // 
-            this.button_Uninstall.Location = new System.Drawing.Point(140, 38);
+            this.button_Uninstall.Location = new System.Drawing.Point(184, 53);
             this.button_Uninstall.Name = "button_Uninstall";
-            this.button_Uninstall.Size = new System.Drawing.Size(200, 60);
+            this.button_Uninstall.Size = new System.Drawing.Size(100, 35);
             this.button_Uninstall.TabIndex = 1;
             this.button_Uninstall.Text = "Uninstall";
             this.button_Uninstall.UseVisualStyleBackColor = true;

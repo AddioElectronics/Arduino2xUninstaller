@@ -54,17 +54,14 @@ namespace Arduino2xUninstaller
 
         private void repoToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            Process.Start("https://github.com/AddioElectronics/Arduino2xUninstaller");
+            Process.Start(new ProcessStartInfo("https://github.com/AddioElectronics/Arduino2xUninstaller") { UseShellExecute = true});
         }
 
         private void aboutToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            string message = @"The official Arduino 2x Uninstaller can some times 
-produce a false positive for the Arduino IDE being
-open, and will not uninstall the product.
-This program manually removes the registry keys
-and deletes the files.
-Only use when the official uninstaller fails.
+            string message = @"The official Arduino 2x Uninstaller can produce false positives for open Arduino IDE instances, and will effectively freeze the uninstall. 
+This program manually removes the registry keys and deletes the files. 
+It's recommended to use the official uninstaller when possible.
 Use at your own risk.";
 
 
